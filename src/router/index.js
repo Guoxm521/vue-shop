@@ -2,10 +2,15 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "@/components/Login";
 import Home from "@/components/Home";
-
+import User from "@/components/user/User";
+import Welcome from "@/components/Welcome";
 Vue.use(VueRouter);
 
-
+// 解决Vue-router重复点击报错的问题
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 const routes = [
 	{
 		path: "/",
@@ -18,7 +23,17 @@ const routes = [
 	},
 	{
 		path:"/home",
-		component:Home
+		component:Home,
+		children:[
+			{
+				path:'/users',
+				component:User
+			},
+			{
+				path:'/home',
+				component:Welcome
+			}
+		]
 	}
 ];
 
@@ -28,7 +43,12 @@ const router = new VueRouter({
 
 // 导航守卫
 router.beforeEach((to,from,next) => {
-	if(to.path === '/login') return next();
+	if(to.path === '/login'){
+		window.sessionStorage.clear();
+		//阻止页面的后退
+		history.pushState(null,null,location.hash);
+		return next();
+	}
 	const tokenStr = window.sessionStorage.getItem('token');
 	if(!tokenStr) return next('/login');
 	next();
