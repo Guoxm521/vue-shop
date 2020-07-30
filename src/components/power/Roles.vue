@@ -280,8 +280,6 @@ export default {
       this.rightsList = res.data;
       this.setRightsVisible = true;
     },
-    // 通过递归获取角色三级权限的id，并保存到defkeys数组
-    getLeafkeys(node, arr) {},
     // 分配权限
     async allotRights() {
       const keys = [
