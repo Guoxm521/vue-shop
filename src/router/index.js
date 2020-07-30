@@ -6,6 +6,7 @@ import User from "@/components/user/User";
 import Welcome from "@/components/Welcome";
 import Rights from "@/components/power/Rights";
 import Roles from "@/components/power/Roles";
+import List from "@/components/goods/List";
 Vue.use(VueRouter);
 
 // 解决Vue-router重复点击报错的问题
@@ -42,6 +43,9 @@ const routes = [
 			{
 				path:'/roles',
 				component:Roles
+			},{
+				path:'/goods',
+				component:List
 			}
 		]
 	}
