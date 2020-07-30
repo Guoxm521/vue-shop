@@ -141,4 +141,8 @@ export default {
 .el-main {
   background-color: #eaedf1;
 }
+//影藏中间的main区域的局部滚动条
+.el-main::-webkit-scrollbar {
+  display: none;
+}
 </style>

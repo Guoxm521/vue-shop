@@ -18,7 +18,8 @@
           <el-button type="primary" @click="addDialogVisible = true">添加用户</el-button>
         </el-col>
       </el-row>
-      <el-table :data="userList" border style="width: 100%">
+      <div>
+        <el-table :data="userList" border style="width: 100%">
         <el-table-column type="index" label="id" width="180"></el-table-column>
         <el-table-column prop="username" label="姓名" width="180"></el-table-column>
         <el-table-column prop="email" label="邮箱" width="180"></el-table-column>
@@ -63,6 +64,7 @@
           </template>
         </el-table-column>
       </el-table>
+      </div>
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -258,8 +260,7 @@ export default {
             type: "error",
           });
         } else {
-          const backRes = await this.$http.post("users", this.addUserForm);
-          console.log(backRes);
+          await this.$http.post("users", this.addUserForm);
           this.addDialogVisible = false;
           this.getUserList();
           this.$message({
