@@ -33,7 +33,8 @@
               v-for="subitem in item.children"
               :key="subitem.id"
               @click="saveNavState('/' + subitem.path)"
-            >{{subitem.authName}}</el-menu-item>
+            ><i class="el-icon-menu"></i>
+            {{subitem.authName}}</el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>

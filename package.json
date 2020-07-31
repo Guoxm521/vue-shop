@@ -26,7 +26,8 @@
     "less-loader": "^6.2.0",
     "open-browser-webpack-plugin": "0.0.5",
     "vue-cli-plugin-element": "^1.0.1",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack-dev-server": "^3.11.0"
   },
   "eslintConfig": {
     "root": true,
