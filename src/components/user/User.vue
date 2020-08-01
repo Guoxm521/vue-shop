@@ -10,8 +10,8 @@
     <el-card class="box-card">
       <el-row :gutter="40">
         <el-col :span="6">
-          <el-input placeholder="请输入内容">
-            <el-button slot="append" icon="el-icon-search"></el-button>
+          <el-input placeholder="请输入内容" v-model="search" @keyup.enter.native="searchUser" clearable> 
+            <el-button slot="append" icon="el-icon-search" @click="searchUser"></el-button>
           </el-input>
         </el-col>
         <el-col :span="4">
@@ -166,6 +166,8 @@ export default {
       callback(new Error("请输入合法的用户号码"));
     };
     return {
+      // 搜索
+      search:'',
       // 用户列表
       userList: [],
       total: 0,
@@ -250,6 +252,11 @@ export default {
     handleCurrentChange(currenNum) {
       this.params.pagenum = currenNum;
       this.getUserList();
+    },
+    //搜索用户
+    searchUser() {
+      this.params.query = this.search;
+      this.getUserList()
     },
     // 用户信息添加
     addUser() {
