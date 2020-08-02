@@ -6,9 +6,16 @@ import "@/assets/css/global.css";
 // 引入外部的字体图标样式
 import "./assets/fonts/iconfont.css";
 
+import VueQuillEditor from "vue-quill-editor";
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import "quill/dist/quill.bubble.css";
+
+Vue.use(VueQuillEditor);
+
 // 导入表格树
-import TreeTable from 'vue-table-with-tree-grid';
-Vue.component('tree-table',TreeTable);
+import TreeTable from "vue-table-with-tree-grid";
+Vue.component("tree-table", TreeTable);
 // 引入elementui
 import "./plugins/element.js";
 //引入axios包  并且挂载到vue上面
