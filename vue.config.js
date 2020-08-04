@@ -32,7 +32,7 @@ module.exports = {
 				args[0].isProd = false;
 				return args;
 			});
-			config.set("assetsPublicPath", "./");
+
 		});
 	},
 };
