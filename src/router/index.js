@@ -10,6 +10,7 @@ import List from "@/components/goods/List";
 import GoodPage from "@/components/goods/Add";
 import Cate from "@/components/goods/Cate";
 import Params from "@/components/goods/Params";
+import Order from "@/components/order/Order";
 Vue.use(VueRouter);
 
 // 解决Vue-router重复点击报错的问题
@@ -58,6 +59,9 @@ const routes = [
 			},{
 				path:"/params",
 				component:Params
+			},{
+				path:'/orders',
+				component:Order
 			}
 		]
 	}

@@ -135,7 +135,7 @@
     </el-dialog>
 
     <!-- 修改属性的弹出框 -->
-    <el-dialog :title="'修改'+ getTextTitle"  width="35%" :visible.sync="editDialogFormVisible">
+    <el-dialog :title="'修改'+ getTextTitle" width="35%" :visible.sync="editDialogFormVisible">
       <el-form :model="editForm" :rules="addFormRules" ref="editFromRef">
         <el-form-item :label="getTextTitle" prop="attr_name" :label-width="formLabelWidth">
           <el-input v-model="editForm.attr_name" autocomplete="off"></el-input>
@@ -199,10 +199,10 @@ export default {
     },
     //  计算属性  获取商品的id
     getCateId() {
-        if (this.selectCateList.length === 3) {
-          return this.selectCateList[2];
-        }
-        return null;
+      if (this.selectCateList.length === 3) {
+        return this.selectCateList[2];
+      }
+      return null;
     },
     // 获取tab页的标题
     getTextTitle() {
@@ -276,7 +276,7 @@ export default {
         if (res.meta.status !== 201) {
           return this.$message.error("添加参数失败！");
         }
-        this.addForm.attr_name = ''
+        this.addForm.attr_name = "";
         this.$message.success("添加参数成功！");
         this.addDialogFormVisible = false;
         this.getParamsData();
@@ -342,7 +342,7 @@ export default {
     // 点击按钮显示输入框
     showInput(row) {
       row.inputVisible = true;
-      this.$nextTick((_) => {
+      this.$nextTick(() => {
         this.$refs.saveTagInput.$refs.input.focus();
       });
     },
