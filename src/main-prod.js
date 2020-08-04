@@ -7,9 +7,11 @@ import "@/assets/css/global.css";
 import "./assets/fonts/iconfont.css";
 
 import VueQuillEditor from "vue-quill-editor";
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.snow.css";
-import "quill/dist/quill.bubble.css";
+// import "quill/dist/quill.core.css";
+// import "quill/dist/quill.snow.css";
+// import "quill/dist/quill.bubble.css";
+import NProgress from 'nprogress';
+// import 'nprogress/nprogress.css';
 
 Vue.use(VueQuillEditor);
 
@@ -17,16 +19,22 @@ Vue.use(VueQuillEditor);
 import TreeTable from "vue-table-with-tree-grid";
 Vue.component("tree-table", TreeTable);
 // 引入elementui
-import "./plugins/element.js";
+// import "./plugins/element.js";
 //引入axios包  并且挂载到vue上面
 import axios from "axios";
 // 设置axios请求的根路径
 axios.defaults.baseURL = "http://127.0.0.1:8888/api/private/v1/";
 // 对所有的axios 进行拦截请求
 axios.interceptors.request.use((config) => {
+	NProgress.start();
 	config.headers.Authorization = window.sessionStorage.getItem("token");
 	return config;
 });
+axios.interceptors.response.use(config => {
+	NProgress.done();
+	return config
+})
+
 Vue.prototype.$http = axios;
 
 // 格式化时间的全局过滤器
